@@ -83,6 +83,11 @@ public class DecoderActivity extends AppCompatActivity
     pointsOverlayView.setPoints(points);
   }
 
+  @Override
+  public void onFrameRead(byte[] byteBuffer, int width, int height, int rotation) {
+
+  }
+
   private void requestCameraPermission() {
     if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
       Snackbar.make(mainLayout, "Camera access is required to display the camera preview.",

@@ -58,6 +58,7 @@ public class QRCodeReaderView extends SurfaceView
     public interface OnQRCodeReadListener {
 
         void onQRCodeRead(String text, PointF[] points);
+        void onFrameRead(byte[] byteBuffer, int width, int height, int rotation);
     }
 
     private OnQRCodeReadListener mOnQRCodeReadListener;
@@ -360,6 +361,11 @@ public class QRCodeReaderView extends SurfaceView
             if (view == null) {
                 return null;
             }
+
+            view.mOnQRCodeReadListener.onFrameRead(params[0],
+                                                   view.mPreviewWidth,
+                                                   view.mPreviewHeight,
+                                                   view.getCameraDisplayOrientation());
 
             final PlanarYUVLuminanceSource source =
                     view.mCameraManager.buildLuminanceSource(params[0], view.mPreviewWidth,
