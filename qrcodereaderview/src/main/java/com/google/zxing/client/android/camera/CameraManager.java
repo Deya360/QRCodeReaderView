@@ -22,7 +22,6 @@ import android.hardware.Camera;
 import android.view.SurfaceHolder;
 
 import com.dlazaro66.qrcodereaderview.SimpleLog;
-import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.client.android.camera.open.OpenCamera;
 import com.google.zxing.client.android.camera.open.OpenCameraInterface;
 
@@ -220,18 +219,5 @@ public final class CameraManager {
       openCamera.getCamera().stopPreview();
       previewing = false;
     }
-  }
-
-  /**
-   * A factory method to build the appropriate LuminanceSource object based on the format
-   * of the preview buffers, as described by Camera.Parameters.
-   *
-   * @param data A preview frame.
-   * @param width The width of the image.
-   * @param height The height of the image.
-   * @return A PlanarYUVLuminanceSource instance.
-   */
-  public PlanarYUVLuminanceSource buildLuminanceSource(byte[] data, int width, int height) {
-    return new PlanarYUVLuminanceSource(data, width, height, 0, 0, width, height, false);
   }
 }
